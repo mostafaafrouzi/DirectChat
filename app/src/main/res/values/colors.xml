@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#00A86B</color>
+    <color name="primary_dark">#00875A</color>
+    <color name="whatsapp">#25D366</color>
+    <color name="telegram">#229ED9</color>
+    <color name="eitaa">#E67E22</color>
+    <color name="bale">#1FA898</color>
+    <color name="rubika">#7952B3</color>
+</resources>
