@@ -29,6 +29,9 @@ import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -103,8 +106,9 @@ fun PhoneInputField(
 
             Spacer(modifier = Modifier.height(12.dp))
 
-            // Phone Input Field with Inline Interactive Paste Button
-            OutlinedTextField(
+            // Phone Input Field with Inline Interactive Paste Button (Enforce LTR so digits start on left and Paste/Clear actions stay on the right in both Persian and English)
+            CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
+                OutlinedTextField(
                 value = value,
                 onValueChange = onValueChange,
                 placeholder = {
@@ -171,7 +175,8 @@ fun PhoneInputField(
                         }
                     }
                 }
-            )
+                )
+            }
 
             AnimatedVisibility(visible = parsedPhone.isValid) {
                 Column {
