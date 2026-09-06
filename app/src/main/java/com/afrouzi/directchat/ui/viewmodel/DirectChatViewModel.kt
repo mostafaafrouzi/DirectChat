@@ -3,6 +3,7 @@ package com.afrouzi.directchat.ui.viewmodel
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.content.Intent
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.afrouzi.directchat.R
@@ -131,6 +132,7 @@ class DirectChatViewModel : ViewModel() {
                     val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
                     val clip = ClipData.newPlainText("DirectChat Phone", phone.rawInput)
                     clipboard.setPrimaryClip(clip)
+                    launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     context.startActivity(launchIntent)
                     val appName = messenger.nameFa
                     val msg = context.getString(R.string.copied_and_opened, appName)

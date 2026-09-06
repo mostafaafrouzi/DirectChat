@@ -121,12 +121,36 @@ class MainActivity : ComponentActivity() {
                                     onThemeChange = { theme ->
                                         coroutineScope.launch { settingsRepository.setTheme(theme) }
                                     },
-                                    onBack = { currentScreen = "home" }
+                                    onBack = { currentScreen = "home" },
+                                    onOpenUrl = { url -> openUrl(url) }
                                 )
                             }
                         }
                     }
                 }
+            }
+        }
+    }
+
+    private fun openUrl(url: String) {
+        try {
+            val intent = Intent(Intent.ACTION_VIEW, android.net.Uri.parse(url)).apply {
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            }
+            startActivity(intent)
+        } catch (e: Exception) {
+            try {
+                val chooser = Intent.createChooser(
+                    Intent(Intent.ACTION_VIEW, android.net.Uri.parse(url)).apply {
+                        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    },
+                    null
+                ).apply {
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                }
+                startActivity(chooser)
+            } catch (e2: Exception) {
+                android.util.Log.e("DirectChat", "Failed to open URL: $url", e2)
             }
         }
     }

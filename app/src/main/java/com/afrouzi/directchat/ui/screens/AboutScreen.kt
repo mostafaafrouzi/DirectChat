@@ -62,16 +62,37 @@ fun AboutScreen(
     currentTheme: String,
     onLanguageChange: (String) -> Unit,
     onThemeChange: (String) -> Unit,
-    onBack: () -> Unit
+    onBack: () -> Unit,
+    onOpenUrl: ((String) -> Unit)? = null
 ) {
     val context = LocalContext.current
     val scrollState = rememberScrollState()
 
     fun openUrl(url: String) {
+        if (onOpenUrl != null) {
+            onOpenUrl(url)
+            return
+        }
         try {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url)).apply {
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            }
             context.startActivity(intent)
-        } catch (_: Exception) {}
+        } catch (e: Exception) {
+            try {
+                val chooser = Intent.createChooser(
+                    Intent(Intent.ACTION_VIEW, Uri.parse(url)).apply {
+                        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    },
+                    null
+                ).apply {
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                }
+                context.startActivity(chooser)
+            } catch (e2: Exception) {
+                android.util.Log.e("DirectChat", "Failed to open URL: $url", e2)
+            }
+        }
     }
 
     Scaffold(
