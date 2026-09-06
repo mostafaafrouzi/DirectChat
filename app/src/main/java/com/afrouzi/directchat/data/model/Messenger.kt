@@ -93,33 +93,6 @@ enum class Messenger(
         webFallbackUrl = "https://t.me/",
         storePackageName = "org.telegram.messenger"
     ),
-    EITAA(
-        id = "eitaa",
-        nameFa = "ایتا",
-        nameEn = "Eitaa",
-        primaryPackage = "ir.eitaa.messenger",
-        fallbackPackages = listOf(
-            "ir.eitaa.messenger.web",
-            "ir.eitaa.messenger.direct",
-            "ir.eitaa.messenger2",
-            "ir.eitaa",
-            "com.eitaa.messenger"
-        ),
-        variants = listOf(
-            MessengerVariant(
-                id = "eitaa",
-                nameFa = "ایتا",
-                nameEn = "Eitaa",
-                packageName = "ir.eitaa.messenger",
-                iconRes = R.drawable.ic_eitaa_official
-            )
-        ),
-        iconRes = R.drawable.ic_eitaa_official,
-        brandColorHex = 0xFFE67E22,
-        supportsPrefilledText = true,
-        webFallbackUrl = "https://eitaa.com/",
-        storePackageName = "ir.eitaa.messenger"
-    ),
     BALE(
         id = "bale",
         nameFa = "بله",
@@ -141,89 +114,110 @@ enum class Messenger(
         webFallbackUrl = "https://ble.ir/",
         storePackageName = "ir.nasim"
     ),
-    RUBIKA(
-        id = "rubika",
-        nameFa = "روبیکا",
-        nameEn = "Rubika",
-        primaryPackage = "app.rbmain.a",
-        fallbackPackages = listOf("ir.resaneh1.iptv", "ir.rubika.chat"),
-        variants = listOf(
-            MessengerVariant(
-                id = "rubika",
-                nameFa = "روبیکا",
-                nameEn = "Rubika",
-                packageName = "app.rbmain.a",
-                iconRes = R.drawable.ic_rubika_official
-            )
-        ),
-        iconRes = R.drawable.ic_rubika_official,
-        brandColorHex = 0xFF7952B3,
-        supportsPrefilledText = true,
-        webFallbackUrl = "https://rubika.ir/",
-        storePackageName = "app.rbmain.a"
-    ),
-    SOROUSH_PLUS(
-        id = "soroush_plus",
-        nameFa = "سروش پلاس",
-        nameEn = "Soroush Plus",
-        primaryPackage = "mobi.mmdt.ottplus",
-        fallbackPackages = listOf("mobi.mmdt.ott"),
-        variants = listOf(
-            MessengerVariant(
-                id = "soroush_plus",
-                nameFa = "سروش پلاس",
-                nameEn = "Soroush Plus",
-                packageName = "mobi.mmdt.ottplus",
-                iconRes = R.drawable.ic_soroush_official
-            )
-        ),
-        iconRes = R.drawable.ic_soroush_official,
-        brandColorHex = 0xFF1583D7,
-        supportsPrefilledText = true,
-        webFallbackUrl = "https://splus.ir/",
-        storePackageName = "mobi.mmdt.ottplus"
-    ),
-    IGAP(
-        id = "igap",
-        nameFa = "آی‌گپ",
-        nameEn = "iGap",
-        primaryPackage = "net.iGap",
+    SIGNAL(
+        id = "signal",
+        nameFa = "سیگنال",
+        nameEn = "Signal",
+        primaryPackage = "org.thoughtcrime.securesms",
         fallbackPackages = emptyList(),
         variants = listOf(
             MessengerVariant(
-                id = "igap",
-                nameFa = "آی‌گپ",
-                nameEn = "iGap",
-                packageName = "net.iGap",
-                iconRes = R.drawable.ic_igap_official
+                id = "signal",
+                nameFa = "سیگنال",
+                nameEn = "Signal",
+                packageName = "org.thoughtcrime.securesms",
+                iconRes = R.drawable.ic_signal
             )
         ),
-        iconRes = R.drawable.ic_igap_official,
-        brandColorHex = 0xFF007AFF,
+        iconRes = R.drawable.ic_signal,
+        brandColorHex = 0xFF3A76F0,
         supportsPrefilledText = true,
-        webFallbackUrl = "https://igap.net/",
-        storePackageName = "net.iGap"
+        webFallbackUrl = "https://signal.me/#p/",
+        storePackageName = "org.thoughtcrime.securesms"
     ),
-    GAP(
-        id = "gap",
-        nameFa = "گپ",
-        nameEn = "Gap",
-        primaryPackage = "com.gapafzar.messenger",
+    VIBER(
+        id = "viber",
+        nameFa = "وایبر",
+        nameEn = "Viber",
+        primaryPackage = "com.viber.voip",
         fallbackPackages = emptyList(),
         variants = listOf(
             MessengerVariant(
-                id = "gap",
-                nameFa = "گپ",
-                nameEn = "Gap",
-                packageName = "com.gapafzar.messenger",
-                iconRes = R.drawable.ic_gap_official
+                id = "viber",
+                nameFa = "وایبر",
+                nameEn = "Viber",
+                packageName = "com.viber.voip",
+                iconRes = R.drawable.ic_viber
             )
         ),
-        iconRes = R.drawable.ic_gap_official,
-        brandColorHex = 0xFF6A1B9A,
+        iconRes = R.drawable.ic_viber,
+        brandColorHex = 0xFF7360F2,
         supportsPrefilledText = true,
-        webFallbackUrl = "https://gap.im/",
-        storePackageName = "com.gapafzar.messenger"
+        webFallbackUrl = "https://viber.click/",
+        storePackageName = "com.viber.voip"
+    ),
+    SMS(
+        id = "sms",
+        nameFa = "پیامک (SMS)",
+        nameEn = "SMS / Messages",
+        primaryPackage = "com.google.android.apps.messaging",
+        fallbackPackages = listOf("com.android.mms", "com.samsung.android.messaging"),
+        variants = listOf(
+            MessengerVariant(
+                id = "sms",
+                nameFa = "پیامک",
+                nameEn = "SMS",
+                packageName = "com.google.android.apps.messaging",
+                iconRes = R.drawable.ic_sms_message
+            )
+        ),
+        iconRes = R.drawable.ic_sms_message,
+        brandColorHex = 0xFF1976D2,
+        supportsPrefilledText = true,
+        webFallbackUrl = "",
+        storePackageName = "com.google.android.apps.messaging"
+    ),
+    SKYPE(
+        id = "skype",
+        nameFa = "اسکایپ",
+        nameEn = "Skype",
+        primaryPackage = "com.skype.raider",
+        fallbackPackages = listOf("com.skype.m2"),
+        variants = listOf(
+            MessengerVariant(
+                id = "skype",
+                nameFa = "اسکایپ",
+                nameEn = "Skype",
+                packageName = "com.skype.raider",
+                iconRes = R.drawable.ic_skype
+            )
+        ),
+        iconRes = R.drawable.ic_skype,
+        brandColorHex = 0xFF0078D4,
+        supportsPrefilledText = false,
+        webFallbackUrl = "https://web.skype.com/",
+        storePackageName = "com.skype.raider"
+    ),
+    IMO(
+        id = "imo",
+        nameFa = "ایمو",
+        nameEn = "IMO",
+        primaryPackage = "com.imo.android.imoim",
+        fallbackPackages = listOf("com.imo.android.imolite"),
+        variants = listOf(
+            MessengerVariant(
+                id = "imo",
+                nameFa = "ایمو",
+                nameEn = "IMO",
+                packageName = "com.imo.android.imoim",
+                iconRes = R.drawable.ic_imo
+            )
+        ),
+        iconRes = R.drawable.ic_imo,
+        brandColorHex = 0xFF00A3E0,
+        supportsPrefilledText = false,
+        webFallbackUrl = "https://imo.im/",
+        storePackageName = "com.imo.android.imoim"
     );
 
     val allPackages: List<String>

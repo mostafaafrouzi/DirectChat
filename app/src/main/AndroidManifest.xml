@@ -14,32 +14,28 @@
         <package android:name="org.thunderdog.challegram" />
         <package android:name="tw.nekomimi.nekogram" />
 
-        <!-- Eitaa & All Known Variants -->
-        <package android:name="ir.eitaa.messenger" />
-        <package android:name="ir.eitaa.messenger.web" />
-        <package android:name="ir.eitaa.messenger.direct" />
-        <package android:name="ir.eitaa.messenger2" />
-        <package android:name="ir.eitaa" />
-        <package android:name="com.eitaa.messenger" />
-
         <!-- Bale & Variants -->
         <package android:name="ir.nasim" />
         <package android:name="ir.ble.messenger" />
 
-        <!-- Rubika & Variants -->
-        <package android:name="app.rbmain.a" />
-        <package android:name="ir.resaneh1.iptv" />
-        <package android:name="ir.rubika.chat" />
+        <!-- Signal -->
+        <package android:name="org.thoughtcrime.securesms" />
 
-        <!-- Soroush Plus & Variants -->
-        <package android:name="mobi.mmdt.ottplus" />
-        <package android:name="mobi.mmdt.ott" />
+        <!-- Viber -->
+        <package android:name="com.viber.voip" />
 
-        <!-- iGap -->
-        <package android:name="net.iGap" />
+        <!-- SMS / Messages -->
+        <package android:name="com.google.android.apps.messaging" />
+        <package android:name="com.android.mms" />
+        <package android:name="com.samsung.android.messaging" />
 
-        <!-- Gap -->
-        <package android:name="com.gapafzar.messenger" />
+        <!-- Skype -->
+        <package android:name="com.skype.raider" />
+        <package android:name="com.skype.m2" />
+
+        <!-- IMO -->
+        <package android:name="com.imo.android.imoim" />
+        <package android:name="com.imo.android.imolite" />
 
         <!-- Deep-link schema queries -->
         <intent>
@@ -56,27 +52,27 @@
         </intent>
         <intent>
             <action android:name="android.intent.action.VIEW" />
-            <data android:scheme="eitaa" />
-        </intent>
-        <intent>
-            <action android:name="android.intent.action.VIEW" />
             <data android:scheme="bale" />
         </intent>
         <intent>
             <action android:name="android.intent.action.VIEW" />
-            <data android:scheme="rubika" />
+            <data android:scheme="viber" />
         </intent>
         <intent>
             <action android:name="android.intent.action.VIEW" />
-            <data android:scheme="soroush" />
+            <data android:scheme="skype" />
         </intent>
         <intent>
             <action android:name="android.intent.action.VIEW" />
-            <data android:scheme="igap" />
+            <data android:scheme="imo" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.SENDTO" />
+            <data android:scheme="smsto" />
         </intent>
         <intent>
             <action android:name="android.intent.action.VIEW" />
-            <data android:scheme="gap" />
+            <data android:scheme="sms" />
         </intent>
     </queries>
 

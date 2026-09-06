@@ -51,6 +51,15 @@ object IntentRouter {
     }
 
     fun getMessengerStatus(context: Context, messenger: Messenger): MessengerStatus {
+        if (messenger == Messenger.SMS) {
+            return MessengerStatus(
+                messenger = messenger,
+                isInstalled = true,
+                installedPackageName = null,
+                installedVariants = messenger.variants.map { it.copy(isInstalled = true) }
+            )
+        }
+
         val installedVariants = mutableListOf<MessengerVariant>()
         for (variant in messenger.variants) {
             if (isPackageInstalled(context, variant.packageName)) {
@@ -90,6 +99,16 @@ object IntentRouter {
     ): Intent {
         val encodedText = if (message.isNotBlank()) URLEncoder.encode(message.trim(), "UTF-8") else ""
 
+        if (messenger == Messenger.SMS) {
+            val uri = Uri.parse("smsto:${phone.internationalWithPlus}")
+            return Intent(Intent.ACTION_SENDTO, uri).apply {
+                if (message.isNotBlank()) {
+                    putExtra("sms_body", message.trim())
+                }
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            }
+        }
+
         val (actionUri, pkg) = when (messenger) {
             Messenger.WHATSAPP -> {
                 val phoneParam = phone.internationalNoPlus
@@ -109,41 +128,45 @@ object IntentRouter {
                 }
                 Uri.parse(uriStr) to (targetPackage ?: messenger.primaryPackage)
             }
-            Messenger.EITAA -> {
-                val phoneParam = phone.internationalNoPlus
-                val uriStr = "https://eitaa.com/$phoneParam"
-                Uri.parse(uriStr) to (targetPackage ?: messenger.primaryPackage)
-            }
             Messenger.BALE -> {
-                val phoneParam = if (phone.isIranian) phone.nationalFormat else phone.internationalWithPlus
-                val uriStr = "bale://chat?uid=$phoneParam"
+                val phoneParam = phone.internationalNoPlus
+                val uriStr = "https://ble.ir/$phoneParam"
                 Uri.parse(uriStr) to (targetPackage ?: messenger.primaryPackage)
             }
-            Messenger.RUBIKA -> {
-                val phoneParam = if (phone.isIranian) phone.nationalFormat else phone.internationalWithPlus
-                val uriStr = "rubika://open?phone=$phoneParam"
+            Messenger.SIGNAL -> {
+                val phoneParam = phone.internationalWithPlus
+                val uriStr = "https://signal.me/#p/$phoneParam"
                 Uri.parse(uriStr) to (targetPackage ?: messenger.primaryPackage)
             }
-            Messenger.SOROUSH_PLUS -> {
-                val phoneParam = if (phone.isIranian) phone.nationalFormat else phone.internationalWithPlus
-                val uriStr = "soroush://resolve?phone=$phoneParam"
+            Messenger.VIBER -> {
+                val phoneParam = phone.internationalNoPlus
+                val uriStr = if (encodedText.isNotBlank()) {
+                    "viber://chat?number=%2B$phoneParam&draft=$encodedText"
+                } else {
+                    "viber://chat?number=%2B$phoneParam"
+                }
                 Uri.parse(uriStr) to (targetPackage ?: messenger.primaryPackage)
             }
-            Messenger.IGAP -> {
-                val phoneParam = if (phone.isIranian) phone.nationalFormat else phone.internationalWithPlus
-                val uriStr = "igap://resolve?phone=$phoneParam"
+            Messenger.SMS -> {
+                Uri.parse("smsto:${phone.internationalWithPlus}") to null
+            }
+            Messenger.SKYPE -> {
+                val phoneParam = phone.internationalWithPlus
+                val uriStr = "skype:$phoneParam?chat"
                 Uri.parse(uriStr) to (targetPackage ?: messenger.primaryPackage)
             }
-            Messenger.GAP -> {
-                val phoneParam = if (phone.isIranian) phone.nationalFormat else phone.internationalWithPlus
-                val uriStr = "gap://resolve?phone=$phoneParam"
+            Messenger.IMO -> {
+                val phoneParam = phone.internationalNoPlus
+                val uriStr = "imo://chat?phone=$phoneParam"
                 Uri.parse(uriStr) to (targetPackage ?: messenger.primaryPackage)
             }
         }
 
         return Intent(Intent.ACTION_VIEW, actionUri).apply {
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            setPackage(pkg)
+            if (!pkg.isNullOrBlank()) {
+                setPackage(pkg)
+            }
         }
     }
 
@@ -157,15 +180,13 @@ object IntentRouter {
                     "https://wa.me/${phone.internationalNoPlus}"
                 }
             }
-            Messenger.TELEGRAM -> {
-                "https://t.me/${phone.internationalWithPlus}"
-            }
-            Messenger.EITAA -> "https://eitaa.com/"
-            Messenger.BALE -> "https://ble.ir/"
-            Messenger.RUBIKA -> "https://rubika.ir/"
-            Messenger.SOROUSH_PLUS -> "https://splus.ir/"
-            Messenger.IGAP -> "https://igap.net/"
-            Messenger.GAP -> "https://gap.im/"
+            Messenger.TELEGRAM -> "https://t.me/${phone.internationalWithPlus}"
+            Messenger.BALE -> "https://ble.ir/${phone.internationalNoPlus}"
+            Messenger.SIGNAL -> "https://signal.me/#p/${phone.internationalWithPlus}"
+            Messenger.VIBER -> "https://viber.click/"
+            Messenger.SMS -> "smsto:${phone.internationalWithPlus}"
+            Messenger.SKYPE -> "https://web.skype.com/"
+            Messenger.IMO -> "https://imo.im/"
         }
         return Intent(Intent.ACTION_VIEW, Uri.parse(url)).apply {
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -186,12 +207,12 @@ object IntentRouter {
                 else "https://wa.me/${phone.internationalNoPlus}"
             }
             Messenger.TELEGRAM -> "https://t.me/${phone.internationalWithPlus}"
-            Messenger.EITAA -> "https://eitaa.com/"
-            Messenger.BALE -> "https://ble.ir/"
-            Messenger.RUBIKA -> "https://rubika.ir/"
-            Messenger.SOROUSH_PLUS -> "https://splus.ir/"
-            Messenger.IGAP -> "https://igap.net/"
-            Messenger.GAP -> "https://gap.im/"
+            Messenger.BALE -> "https://ble.ir/${phone.internationalNoPlus}"
+            Messenger.SIGNAL -> "https://signal.me/#p/${phone.internationalWithPlus}"
+            Messenger.VIBER -> "viber://chat?number=%2B${phone.internationalNoPlus}"
+            Messenger.SMS -> "smsto:${phone.internationalWithPlus}"
+            Messenger.SKYPE -> "skype:${phone.internationalWithPlus}?chat"
+            Messenger.IMO -> "imo://chat?phone=${phone.internationalNoPlus}"
         }
     }
 }
