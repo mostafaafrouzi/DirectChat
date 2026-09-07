@@ -25,16 +25,7 @@ class IntentRouterTest {
         val signalLink = IntentRouter.buildDirectLinkUrl(Messenger.SIGNAL, phone)
         assertEquals("https://signal.me/#p/+989123456789", signalLink)
 
-        val viberLink = IntentRouter.buildDirectLinkUrl(Messenger.VIBER, phone)
-        assertEquals("viber://chat?number=%2B989123456789", viberLink)
-
         val smsLink = IntentRouter.buildDirectLinkUrl(Messenger.SMS, phone)
         assertEquals("smsto:+989123456789", smsLink)
-
-        val skypeLink = IntentRouter.buildDirectLinkUrl(Messenger.SKYPE, phone)
-        assertEquals("skype:+989123456789?chat", skypeLink)
-
-        val imoLink = IntentRouter.buildDirectLinkUrl(Messenger.IMO, phone)
-        assertEquals("imo://chat?phone=989123456789", imoLink)
     }
 }

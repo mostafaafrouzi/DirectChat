@@ -113,19 +113,15 @@ object IntentRouter {
             Messenger.WHATSAPP -> {
                 val phoneParam = phone.internationalNoPlus
                 val uriStr = if (encodedText.isNotBlank()) {
-                    "https://api.whatsapp.com/send?phone=$phoneParam&text=$encodedText"
+                    "https://wa.me/$phoneParam?text=$encodedText"
                 } else {
-                    "https://api.whatsapp.com/send?phone=$phoneParam"
+                    "https://wa.me/$phoneParam"
                 }
                 Uri.parse(uriStr) to (targetPackage ?: messenger.primaryPackage)
             }
             Messenger.TELEGRAM -> {
                 val phoneParam = phone.internationalWithPlus
-                val uriStr = if (encodedText.isNotBlank()) {
-                    "tg://msg?to=$phoneParam&text=$encodedText"
-                } else {
-                    "tg://resolve?phone=$phoneParam"
-                }
+                val uriStr = "tg://resolve?phone=$phoneParam"
                 Uri.parse(uriStr) to (targetPackage ?: messenger.primaryPackage)
             }
             Messenger.BALE -> {
@@ -138,27 +134,8 @@ object IntentRouter {
                 val uriStr = "https://signal.me/#p/$phoneParam"
                 Uri.parse(uriStr) to (targetPackage ?: messenger.primaryPackage)
             }
-            Messenger.VIBER -> {
-                val phoneParam = phone.internationalNoPlus
-                val uriStr = if (encodedText.isNotBlank()) {
-                    "viber://chat?number=%2B$phoneParam&draft=$encodedText"
-                } else {
-                    "viber://chat?number=%2B$phoneParam"
-                }
-                Uri.parse(uriStr) to (targetPackage ?: messenger.primaryPackage)
-            }
             Messenger.SMS -> {
                 Uri.parse("smsto:${phone.internationalWithPlus}") to null
-            }
-            Messenger.SKYPE -> {
-                val phoneParam = phone.internationalWithPlus
-                val uriStr = "skype:$phoneParam?chat"
-                Uri.parse(uriStr) to (targetPackage ?: messenger.primaryPackage)
-            }
-            Messenger.IMO -> {
-                val phoneParam = phone.internationalNoPlus
-                val uriStr = "imo://chat?phone=$phoneParam"
-                Uri.parse(uriStr) to (targetPackage ?: messenger.primaryPackage)
             }
         }
 
@@ -183,10 +160,7 @@ object IntentRouter {
             Messenger.TELEGRAM -> "https://t.me/${phone.internationalWithPlus}"
             Messenger.BALE -> "https://ble.ir/${phone.internationalNoPlus}"
             Messenger.SIGNAL -> "https://signal.me/#p/${phone.internationalWithPlus}"
-            Messenger.VIBER -> "https://viber.click/"
             Messenger.SMS -> "smsto:${phone.internationalWithPlus}"
-            Messenger.SKYPE -> "https://web.skype.com/"
-            Messenger.IMO -> "https://imo.im/"
         }
         return Intent(Intent.ACTION_VIEW, Uri.parse(url)).apply {
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -209,10 +183,7 @@ object IntentRouter {
             Messenger.TELEGRAM -> "https://t.me/${phone.internationalWithPlus}"
             Messenger.BALE -> "https://ble.ir/${phone.internationalNoPlus}"
             Messenger.SIGNAL -> "https://signal.me/#p/${phone.internationalWithPlus}"
-            Messenger.VIBER -> "viber://chat?number=%2B${phone.internationalNoPlus}"
             Messenger.SMS -> "smsto:${phone.internationalWithPlus}"
-            Messenger.SKYPE -> "skype:${phone.internationalWithPlus}?chat"
-            Messenger.IMO -> "imo://chat?phone=${phone.internationalNoPlus}"
         }
     }
 }

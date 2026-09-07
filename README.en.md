@@ -36,16 +36,13 @@ Whenever you need to send a quick message, inquire about a product price, or coo
 - Send messages immediately without cluttering your address book with temporary or one-time contacts.
 - Enhanced privacy: Your Status, profile picture, and Last Seen are never exposed to unknown parties.
 
-### 2. Comprehensive Support for 8 Working Messengers
-A balanced, clean 2x4 grid layout with 8 fully operational, reliable messaging channels:
-- **WhatsApp:** Unified card for standard WhatsApp and WhatsApp Business.
-- **Telegram:** Unified card supporting Google Play edition, official Direct APK, and Plus Messenger.
+### 2. Streamlined Support for 5 Working Messengers
+A balanced, clean layout with 5 fully operational, reliable messaging channels:
+- **WhatsApp:** Unified card for standard WhatsApp and WhatsApp Business using modern `wa.me` deep links.
+- **Telegram:** Unified card supporting Google Play edition, official Direct APK, and Plus Messenger, directly launching 1-on-1 contact chats (`tg://resolve`).
 - **Bale:** Popular banking & social messenger with official direct phone links (`ble.ir/98...`).
 - **Signal:** The world's most secure encrypted messenger via official phone deep links (`signal.me/#p/+...`).
-- **Viber:** Dedicated deep-link to initiate conversations by phone number (`viber://chat?number=...`).
-- **Default SMS / Messages:** System intent available on 100% of Android devices even without an active internet connection.
-- **Skype:** Direct chat and call launching for international phone numbers.
-- **IMO:** Instant conversation starter based on phone numbers.
+- **Default SMS / Messages:** Full-width dedicated system intent card available on 100% of Android devices even offline.
 
 ### 3. Unified Variant Chooser Dialog
 - Instead of cluttering the UI with multiple cards, WhatsApp and Telegram versions are merged into single smart cards.
@@ -57,7 +54,7 @@ A balanced, clean 2x4 grid layout with 8 fully operational, reliable messaging c
 - Automatic clipboard phone number detection upon app launch.
 
 ### 5. Optional Pre-filled Message Draft
-- Prepare your greeting, inquiry, or note before jumping into the messaging app, automatically populating the chat input.
+- Prepare your greeting, inquiry, or note before jumping into the messaging app, automatically populating the chat input (supported by WhatsApp and SMS per platform protocols).
 
 ### 6. IRANSansX Eco & Expressive Typography
 - Integrated Persian typography with **IRANSansX Eco** font family alongside standard modern Latin typography.

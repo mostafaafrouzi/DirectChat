@@ -9,6 +9,7 @@
     <string name="clipboard_dismiss">Dismiss</string>
     <string name="message_input_title">Pre-filled Message (Optional)</string>
     <string name="message_input_hint">Hello, I am contacting you regarding…</string>
+    <string name="prefill_supported_apps_hint">Pre-filled message is supported only by WhatsApp and SMS (Messages).</string>
     <string name="messengers_title">Available Messengers</string>
     <string name="messengers_subtitle">Tap any messenger to jump directly into chat</string>
     <string name="status_installed">Installed</string>

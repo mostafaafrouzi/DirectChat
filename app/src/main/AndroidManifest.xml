@@ -21,21 +21,10 @@
         <!-- Signal -->
         <package android:name="org.thoughtcrime.securesms" />
 
-        <!-- Viber -->
-        <package android:name="com.viber.voip" />
-
         <!-- SMS / Messages -->
         <package android:name="com.google.android.apps.messaging" />
         <package android:name="com.android.mms" />
         <package android:name="com.samsung.android.messaging" />
-
-        <!-- Skype -->
-        <package android:name="com.skype.raider" />
-        <package android:name="com.skype.m2" />
-
-        <!-- IMO -->
-        <package android:name="com.imo.android.imoim" />
-        <package android:name="com.imo.android.imolite" />
 
         <!-- Deep-link schema queries -->
         <intent>
@@ -53,18 +42,6 @@
         <intent>
             <action android:name="android.intent.action.VIEW" />
             <data android:scheme="bale" />
-        </intent>
-        <intent>
-            <action android:name="android.intent.action.VIEW" />
-            <data android:scheme="viber" />
-        </intent>
-        <intent>
-            <action android:name="android.intent.action.VIEW" />
-            <data android:scheme="skype" />
-        </intent>
-        <intent>
-            <action android:name="android.intent.action.VIEW" />
-            <data android:scheme="imo" />
         </intent>
         <intent>
             <action android:name="android.intent.action.SENDTO" />

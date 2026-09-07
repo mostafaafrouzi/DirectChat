@@ -28,17 +28,23 @@ fun MessengerGrid(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(10.dp)
             ) {
-                rowStatuses.forEach { status ->
+                if (rowStatuses.size == 1) {
+                    val status = rowStatuses.first()
                     MessengerCard(
                         status = status,
                         isPersian = isPersian,
                         onClick = { onMessengerClick(status.messenger) },
-                        modifier = Modifier.weight(1f)
+                        modifier = Modifier.fillMaxWidth()
                     )
-                }
-                // If odd number of items in row, add spacer for balance
-                if (rowStatuses.size == 1) {
-                    Spacer(modifier = Modifier.weight(1f))
+                } else {
+                    rowStatuses.forEach { status ->
+                        MessengerCard(
+                            status = status,
+                            isPersian = isPersian,
+                            onClick = { onMessengerClick(status.messenger) },
+                            modifier = Modifier.weight(1f)
+                        )
+                    }
                 }
             }
         }

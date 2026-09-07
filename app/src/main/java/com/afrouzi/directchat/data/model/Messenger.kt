@@ -89,8 +89,8 @@ enum class Messenger(
         ),
         iconRes = R.drawable.ic_telegram,
         brandColorHex = 0xFF229ED9,
-        supportsPrefilledText = true,
-        webFallbackUrl = "https://t.me/",
+        supportsPrefilledText = false,
+        webFallbackUrl = "https://t.me/+",
         storePackageName = "org.telegram.messenger"
     ),
     BALE(
@@ -110,7 +110,7 @@ enum class Messenger(
         ),
         iconRes = R.drawable.ic_bale,
         brandColorHex = 0xFF00B894,
-        supportsPrefilledText = true,
+        supportsPrefilledText = false,
         webFallbackUrl = "https://ble.ir/",
         storePackageName = "ir.nasim"
     ),
@@ -131,30 +131,9 @@ enum class Messenger(
         ),
         iconRes = R.drawable.ic_signal,
         brandColorHex = 0xFF3A76F0,
-        supportsPrefilledText = true,
+        supportsPrefilledText = false,
         webFallbackUrl = "https://signal.me/#p/",
         storePackageName = "org.thoughtcrime.securesms"
-    ),
-    VIBER(
-        id = "viber",
-        nameFa = "وایبر",
-        nameEn = "Viber",
-        primaryPackage = "com.viber.voip",
-        fallbackPackages = emptyList(),
-        variants = listOf(
-            MessengerVariant(
-                id = "viber",
-                nameFa = "وایبر",
-                nameEn = "Viber",
-                packageName = "com.viber.voip",
-                iconRes = R.drawable.ic_viber
-            )
-        ),
-        iconRes = R.drawable.ic_viber,
-        brandColorHex = 0xFF7360F2,
-        supportsPrefilledText = true,
-        webFallbackUrl = "https://viber.click/",
-        storePackageName = "com.viber.voip"
     ),
     SMS(
         id = "sms",
@@ -176,48 +155,6 @@ enum class Messenger(
         supportsPrefilledText = true,
         webFallbackUrl = "",
         storePackageName = "com.google.android.apps.messaging"
-    ),
-    SKYPE(
-        id = "skype",
-        nameFa = "اسکایپ",
-        nameEn = "Skype",
-        primaryPackage = "com.skype.raider",
-        fallbackPackages = listOf("com.skype.m2"),
-        variants = listOf(
-            MessengerVariant(
-                id = "skype",
-                nameFa = "اسکایپ",
-                nameEn = "Skype",
-                packageName = "com.skype.raider",
-                iconRes = R.drawable.ic_skype
-            )
-        ),
-        iconRes = R.drawable.ic_skype,
-        brandColorHex = 0xFF0078D4,
-        supportsPrefilledText = false,
-        webFallbackUrl = "https://web.skype.com/",
-        storePackageName = "com.skype.raider"
-    ),
-    IMO(
-        id = "imo",
-        nameFa = "ایمو",
-        nameEn = "IMO",
-        primaryPackage = "com.imo.android.imoim",
-        fallbackPackages = listOf("com.imo.android.imolite"),
-        variants = listOf(
-            MessengerVariant(
-                id = "imo",
-                nameFa = "ایمو",
-                nameEn = "IMO",
-                packageName = "com.imo.android.imoim",
-                iconRes = R.drawable.ic_imo
-            )
-        ),
-        iconRes = R.drawable.ic_imo,
-        brandColorHex = 0xFF00A3E0,
-        supportsPrefilledText = false,
-        webFallbackUrl = "https://imo.im/",
-        storePackageName = "com.imo.android.imoim"
     );
 
     val allPackages: List<String>

@@ -9,6 +9,7 @@
     <string name="clipboard_dismiss">نادیده گرفتن</string>
     <string name="message_input_title">متن پیام پیش‌نویس (اختیاری)</string>
     <string name="message_input_hint">سلام، در ارتباط با موضوع … پیام می‌دهم</string>
+    <string name="prefill_supported_apps_hint">متن پیش‌نویس فقط توسط واتساپ و پیامک (SMS) پشتیبانی می‌شود.</string>
     <string name="messengers_title">پیام‌رسان‌های پشتیبانی‌شده</string>
     <string name="messengers_subtitle">برای پرتاب مستقیم به صفحه چت روی پیام‌رسان دلخواه بزنید</string>
     <string name="status_installed">نصب‌شده</string>
